@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note Wise</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav id="navbar">
+        <ul>
+            <li><a href="#" id="notebook1-link">Notebook 1</a></li>
+            <li><a href="#" id="notebook2-link">Notebook 2</a></li>
+            <li><a href="#" id="notebook3-link">Notebook 3</a></li>
+            <li><a href="#" id="accessibility-link">Acessibilidade</a></li>
+        </ul>
+    </nav>
+
+    <!-- Container -->
+    <div id="container">
+        <!-- Tela de escolha de notebook -->
+        <div id="notebook-selection" style="display: none;">
+            <h2>Escolha seu Notebook</h2>
+            <p>Selecione o notebook desejado:</p>
+            <ul>
+                <li><a href="#" id="notebook1-select">Notebook 1</a></li>
+                <li><a href="#" id="notebook2-select">Notebook 2</a></li>
+                <li><a href="#" id="notebook3-select">Notebook 3</a></li>
+            </ul>
+        </div>
+
+        <!-- Aba de acessibilidade -->
+        <div id="accessibility" style="display: none;">
+            <h2>Acessibilidade</h2>
+            <p>Configurações de acessibilidade:</p>
+            <!-- Adicione opções de acessibilidade aqui -->
+            <label>
+                <input type="checkbox" id="high-contrast" name="accessibility" value="high-contrast">
+                Contraste Alto
+            </label><br>
+            <label>
+                <input type="checkbox" id="larger-font" name="accessibility" value="larger-font">
+                Fonte Maior
+            </label>
+        </div>
+
+        <!-- Inicialmente, mostre uma mensagem ou outra tela -->
+        <div id="home">
+            <h2>Bem-vindo ao Note Wise</h2>
+            <p>Escolha uma opção acima para começar.</p>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+<style> /* Configurações Gerais */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #ffffff, #f0f0f0, #c0c0c0, #808080, #303030, #000000);
+    height: 100vh;
+}
+
+/* Navbar */
+#navbar {
+    background-color: #303030;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+#navbar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#navbar li {
+    display: inline;
+    margin: 0 10px;
+}
+
+#navbar a {
+    color: white;
+    text-decoration: none;
+}
+
+#navbar a:hover {
+    text-decoration: underline;
+}
+
+/* Container */
+#container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 80px auto;
+    max-width: 400px;
+}
+
+/* Estilo das telas */
+#home,
+#notebook-selection,
+#acessibilidade {
+    display: none;
+}
+
+/* Formulário */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input {
+    margin-bottom: 15px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #303030;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #505050;
+}
+
+/* Acessibilidade */
+#accessibility {
+    display: none;
+}
+
+</style>
+</html>

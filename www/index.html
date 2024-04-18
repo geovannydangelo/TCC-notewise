@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note Wise</title>
+    <style>
+        /* Configurações gerais */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #ffffff, #f0f0f0, #c0c0c0, #808080, #303030, #000000);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estilização dos formulários */
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+        }
+
+        input {
+            margin-bottom: 15px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #303030;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #505050;
+        }
+
+        a {
+            color: #303030;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <!-- Tela de Login -->
+        <div id="login-form">
+            <h2>Login</h2>
+            <form id="login">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Entrar</button>
+            </form>
+            <p>Não tem uma conta? <a href="tela.html" id="to-register">Cadastre-se</a></p>
+        </div>
+
+        <!-- Tela de Cadastro -->
+        <div id="register-form" style="display: none;">
+            <h2>Cadastro</h2>
+            <form id="register">
+                <label for="email-register">Email:</label>
+                <input type="email" id="email-register" name="email" required>
+                <label for="password-register">Senha:</label>
+                <input type="password" id="password-register" name="password" required>
+                <button type="submit">Cadastrar</button>
+            </form>
+            <p>Já tem uma conta? <a href="#" id="to-login">Entrar</a></p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Selecionar os elementos dos formulários
+            const loginForm = document.getElementById('login-form');
+            const registerForm = document.getElementById('register-form');
+
+            // Alternar entre os formulários
+            document.getElementById('to-register').addEventListener('click', function (event) {
+                event.preventDefault();
+                loginForm.style.display = 'none';
+                registerForm.style.display = 'block';
+            });
+
+            document.getElementById('to-login').addEventListener('click', function (event) {
+                event.preventDefault();
+                registerForm.style.display = 'none';
+                loginForm.style.display = 'block';
+            });
+
+            // Manipulação de cadastro
+            document.getElementById('register').addEventListener('submit', function (event) {
+                event.preventDefault();
+                const email = document.getElementById('email-register').value;
+                const password = document.getElementById('password-register').value;
+
+                // Armazenar os dados do usuário em localStorage
+                localStorage.setItem(email, password);
+
+                // Limpar campos de formulário
+                document.getElementById('email-register').value = '';
+                document.getElementById('password-register').value = '';
+
+                // Trocar para a tela de login
+                registerForm.style.display = 'none';
+                loginForm.style.display = 'block';
+            });
+
+            // Manipulação de login
+            document.getElementById('login').addEventListener('submit', function (event) {
+                event.preventDefault();
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+
+                // Obter a senha armazenada em localStorage para o email fornecido
+                const storedPassword = localStorage.getItem(email);
+
+                // Verificar se a senha armazenada corresponde à senha fornecida
+                if (storedPassword === password) {
+                    alert('Login bem-sucedido!');
+                    // Redirecionar para a página desejada após login bem-sucedido
+                } else {
+                    alert('Credenciais inválidas!');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
